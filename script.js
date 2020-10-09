@@ -1,39 +1,35 @@
 // once everything is loaded, run
-function initPart() {
+function initScene() {
 
   // colors array
-  let colors = ["#E7C045"];
-  let boundary = 1000;
+  let colors = ["#E7C045", '#E37E05', '#F74000', '#7A946E', '#2C3143'];
 
+  // petals settings
+  let numPetals = 150;
+  let petals = [];
+  let petalsCont = new THREE.Object3D();
+  let petalGeom = new THREE.BoxBufferGeometry(30,60,30);
 
   // camera, scene & renderer intial settings
+  let boundary = 1000;
   let scene = new THREE.Scene();
   let camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 30000 );
-  // camera.position.x = 850;
-  // camera.position.y = 1650;
-  // camera.position.z = 1200;    
-  // camera.position.x = boundary/2;
-  // camera.position.y = boundary/2;
-  // camera.position.z = 1200;  
-
+  camera.position.x = boundary;
+  camera.position.y = boundary;
+  camera.position.z = 1100;    
   camera.position.x = boundary;
   camera.position.y = boundary;
   camera.position.z = 1100;  
-  
-  // camera.position.x = 0;
-  // camera.position.y = 0;
-  // camera.position.z = 0;
-
   camera.lookAt(new THREE.Vector3(0, 0, 0));
 
+  // set scene div and renderer
   const coreo  = document.getElementById('coreo');
   let renderer = new THREE.WebGLRenderer( { antialias: true } );
   renderer.setPixelRatio( window.devicePixelRatio );
   renderer.setSize( window.innerWidth, window.innerHeight );
-  // renderer.setClearColor( 0x002642, 1 );
-  // document.body.appendChild( renderer.domElement );
   coreo.appendChild( renderer.domElement );
 
+  // set camera controls
   let orbit = new THREE.OrbitControls( camera, renderer.domElement );
   orbit.enableZoom = false;
   orbit.minDistance = 500;
@@ -46,53 +42,37 @@ function initPart() {
 
   let light2 = new THREE.DirectionalLight(0xffffff, .5);
   light2.position.set(-10,-10,10);
-  scene.add(light2);
+  scene.add(light2); 
+  
+  let light3 = new THREE.DirectionalLight(colors[0], 0.5);
+  light3.position.set(-10,-50,10);
+  scene.add(light3);  
+  
+  let light4 = new THREE.DirectionalLight(colors[1], 1.5);
+  light4.position.set(50,-50,10);
+  scene.add(light4);
 
+  // get video div & disable display
   let vidCor = document.getElementById("vidCor");
   vidCor.disabled = true;
 
-
-  // create video input
+  // create video input for posenet
   const videoPos = document.createElement('video');
-  const testDiv  = document.getElementById('video-test');
+  // const testDiv  = document.getElementById('video-test');
   videoPos.setAttribute('width', 255);
   videoPos.setAttribute('height', 255);  
   videoPos.autoplay = true;
 
-
+  // create video & webcam divs
   const videoOut = document.createElement('video');
   const vidDiv = document.getElementById('video');
   const camDiv = document.getElementById('camVid');
   videoOut.setAttribute('width', 1920);
   videoOut.setAttribute('height', 1080);  
-  // videoOut.setAttribute('width', 2560);
-  // videoOut.setAttribute('height', 1440);
   videoOut.autoplay = true;
+  camDiv.appendChild(vidCor);
 
-
-  // video texture tests
-  // let videoOutTex = new THREE.VideoTexture( videoOut );
-  // videoOutTex.minFilter = THREE.LinearFilter;
-  // videoOutTex.magFilter = THREE.LinearFilter;
-  // videoOutTex.format = THREE.RGBFormat;
-
-  // let centerGeometry = new THREE.BoxBufferGeometry(500,500,500);
-  // let centerMat =  new THREE.MeshPhongMaterial( { shininess: 15, flatShading: false, color: "#E48D48", texture:videoOutTex} );
-  // let centerShape = new THREE.Mesh(centerGeometry, centerMat);
-  // scene.add(centerShape)
-
-
-  // if (coreoOn) {
-  //   vidDiv.style.opacity = 1;
-  // }
-
-
-  // vidDiv.appendChild(videoOut); // display video input
-  camDiv.appendChild(vidCor); // display video input
-  // testDiv.appendChild(videoPos); // display video input
-  // vidDiv.appendChild(videoPos); // display video input
-
-  // stream video for posenet
+  // stream webcam for posenet
   navigator.mediaDevices.getUserMedia({
     video: true,
     audio: false
@@ -101,10 +81,8 @@ function initPart() {
   }).catch(function (err) {
     console.log("An error occurred! " + err);
   });
-
-
   
-  // stream video for display
+  // stream webcam for display
   navigator.mediaDevices.getUserMedia({
     video: true,
     audio: false
@@ -114,24 +92,32 @@ function initPart() {
     console.log("An error occurred! " + err);
   });
 
-
-
-  // initialise particles
+  // initialise mover attractors
   let movers = [];
   let grMovers = new THREE.Group();
-  let cloud;
-  let particles = [];
-
   for (let i = 0; i < 13; i++) {
-    // movers[i] = new Mover(Math.random()*boundary, Math.random()*boundary, Math.random()*boundary, Math.random()*30, Math.random()*30);
-    // movers[i] = new Mover(Math.random()*boundary, Math.random()*boundary, 0, 15, 50);
-    // movers[i] = new Mover(boundary, 0, 0, 10, 300);
-    // movers[i] = new Mover(Math.random()*boundary, Math.random()*boundary, 0, 10, 100);
-    movers[i] = new Mover(Math.random()*boundary, boundary, 0, 10, 500);
+    movers[i] = new Mover(Math.random()*boundary, boundary, 0, 50, 500);
     movers[i].initialise();
-    // movers[i].display();
+    movers[i].display();
   }
   scene.add( grMovers );
+
+  // initialise mouse attractor
+  let mouse = new THREE.Vector2();
+  let mouseMover = new Mover(Math.random()*boundary, boundary, 0, 100, 500);
+  mouseMover.initialise();
+  function onDocumentMouseMove( event ) {
+    mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+    mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+    // raycaster.setFromCamera( mouse.clone(), camera );   
+    mouseMover.position.x = THREE.Math.mapLinear( mouse.x, -1, 1, -boundary, boundary );
+    mouseMover.position.y = THREE.Math.mapLinear( mouse.y, -1, 1, -boundary, boundary );
+    // console.log(mouse.x,mouse.y)
+    mouseMover.update();
+    mouseMover.display();
+  }
+  document.addEventListener( 'mousemove', onDocumentMouseMove );
+
 
   // ml5 posenet config
   const options = {
@@ -140,11 +126,6 @@ function initPart() {
     minConfidence: 0.5
   };
   const poseNet = ml5.poseNet(videoPos, options, modelReady);
-  // let nose;
-  // important to initialize an empty object which will //
-  // store the x and y coordinates of your target body part //
-  // in this case it is the nose! //
-
 
   function modelReady() {
     console.log("posenet ready!");
@@ -156,32 +137,8 @@ function initPart() {
       poseNet.setMaxListeners(4);
       if (results[0]) {
         let pose = results[0].pose;
-        // let nose = pose.keypoints[0];
-        // let keypoint = pose.keypoints[0];
-        // console.log(nose.position.x, nose.position.y);
-        // console.log(pose.keypoints[9].position.x, pose.keypoints[9].position.y);
-        // console.log(keypoint.position.x);
 
-        // if (pose.keypoints[0] || pose.keypoints[1] || pose.keypoints[2] || pose.keypoints[9] || pose.keypoints[10]) {
-        // if (pose.keypoints[0] || pose.keypoints[9] || pose.keypoints[10]) {
         if (pose.keypoints) {
-
-          // for (let i = 0; i < movers.length; i++) {
-          //  movers[i].display();
-          // }
-
-          // for (let i = 0; i < movers[i]; i++) {
-          //   if (pose.keypoints[i]) {
-          //     let keypoint = pose.keypoints[i];
-          //     movers[i].position.x = THREE.Math.mapLinear( keypoint.position.x, 0, 255, -boundary, boundary );
-          //     movers[i].position.y = THREE.Math.mapLinear( keypoint.position.y, 0, 255, 0, boundary );
-          //     movers[i].update();
-          //     movers[i].display();
-
-          //   }
-          // }
-
-
           let keyNose = pose.keypoints[0];
           movers[0].position.x = THREE.Math.mapLinear( keyNose.position.x, 0, 255, -boundary, boundary );
           movers[0].position.y = THREE.Math.mapLinear( keyNose.position.y, 255, 0, -boundary, boundary );
@@ -246,7 +203,11 @@ function initPart() {
     });
   }
 
+  // create petal meshes
+  createPetals();
+
   // create particle sprites (geometry + texture + pMaterial + vectors)
+  let cloud;
   let geom = new THREE.Geometry();
   let texture = new THREE.TextureLoader().load( "img/texture_particle_05.png" );
   let pMaterial = new THREE.PointsMaterial({
@@ -260,18 +221,10 @@ function initPart() {
   });
   for (let i = 0; i < 1000; i++) {
       let particle = new THREE.Vector3(Math.random()*boundary, boundary/2, Math.random()*boundary);
-      // let particle = new THREE.Vector3(boundary /2, -1000, Math.random()*boundary);
-      // let particle = new THREE.Vector3(Math.random()*boundary, Math.random()*boundary, Math.random()*boundary);
-      // let particle = new THREE.Vector3(THREE.Math.randInt(-boundary, boundary), THREE.Math.randInt(-boundary, boundary), THREE.Math.randInt(-boundary, boundary));
       geom.vertices.push(particle);
   }  
-  for (let i = 0; i < 15000; i++) {
-      // let particle = new THREE.Vector3(Math.random()*boundary, -boundary, Math.random()*boundary);
-      // let particle = new THREE.Vector3(THREE.Math.randInt(-boundary, boundary), -boundary, THREE.Math.randInt(-boundary, boundary));
-      // let particle = new THREE.Vector3(Math.random()*boundary, boundary, 0);
+  for (let i = 0; i < 14000; i++) {
       let particle = new THREE.Vector3(Math.random()*boundary, Math.random()*boundary, Math.random()*boundary);
-      // let particle = new THREE.Vector3(Math.random()*boundary, 0, Math.random()*boundary);
-      // let particle = new THREE.Vector3(THREE.Math.randInt(-boundary, boundary), boundary, THREE.Math.randInt(-boundary, 0));
       geom.vertices.push(particle);
   }
   // create point cloud with stored vertices and material. Add to scene.
@@ -289,7 +242,6 @@ function initPart() {
   // loop render function
   let render = function () {
     getPoses();
-    // id = requestAnimationFrame( render );
     orbit.update();  
 
     // loop through all movers
@@ -311,39 +263,23 @@ function initPart() {
 
       // apply net forces and update position
       // movers[i].applyForce(gravity);
-      // movers[i].applyForce(wind);
-
       // movers[i].checkEdges();
-      // setInterval(movers[i].animateRandom, 1000);
-
 
       // attract particle system to movers
       cloudSystem.attract(movers[i]);
+      // cloudSystem.attract(mouseMover);
     }
 
-      // apply forces to particle system and update vertices
+    // apply forces to particle system and update vertices
     cloud.geometry.verticesNeedUpdate = true;
-    // cloudSystem.applyForce(wind);
     cloudSystem.applyForce(gravity);
 
-    if (coreoOn && pMaterial.opacity < 1) {
+    if (partsOn && pMaterial.opacity < 1) {
       pMaterial.opacity +=0.01;
-      // if (jamOn) {
-      //   // pMaterial.sizeAttenuation = false;
-      //   // pMaterial.color = "#508DBF";
-      //   console.log("jam trigger");
-      //   videoOut.disabled = true;
-      //   vidCor.disabled = false;
-      //   if (camera.z < 1100) {
-      //     camera.z +=5;
-      //   }
-      // }
-    } else if (!coreoOn && pMaterial.opacity > 0) {
+    } else if (!partsOn && pMaterial.opacity > 0) {
       pMaterial.opacity -= 0.1;
-      camera.z -= 10; 
-
+      // camera.z -= 10; 
     }
-
 
     if (jamOn) {
       // pMaterial.sizeAttenuation = false;
@@ -352,16 +288,26 @@ function initPart() {
       vidDiv.style.opacity = 1;
       camVid.style.opacity = 0;
       console.log("jam trigger");
-      // videoOut.srcObject = vidCor.srcObject;
-      // videoOut.disabled = true;
-      // vidCor.disabled = false;
-      // if (camera.z < 1100) {
-      //   camera.z +=5;
+      if (partsOn && pMaterial.opacity < 1) {
+        pMaterial.opacity += 0.1;
+      }
+    }
+
+    if (transOn) {
+      attractToPetals();
+    }
+
+    if (altarOn) {
+      vidDiv.style.opacity = 1;
+      scene.add(petalsCont);
+      animatePetals();
+      // if (pMaterial.opacity < 0) {
+      //   pMaterial.opacity += 0.1;
       // }
     }
+
     cloudSystem.update();
     cloudSystem.checkEdges();
-
     requestAnimationFrame( render );
     renderer.render( scene, camera );
   };
@@ -373,11 +319,9 @@ function initPart() {
       renderer.setSize( window.innerWidth, window.innerHeight );
   }, false );
   
-
   render();
   orbit.addEventListener('change', onPositionChange);
   
-
 
   function onPositionChange(o) {
     console.log("position changed in object");
@@ -397,14 +341,6 @@ function initPart() {
 
       // create particle mesh (geometry + material)
       let geometry = new THREE.SphereGeometry(this.r,3,3);
-
-      //store original vertices positions
-      // let originalPositions = [];
-      // for (let i = 0; i < geometry.vertices.length; i++) {
-      //   let vertex = geometry.vertices[i];
-      //   let vertexPosition = [vertex.x, vertex.y, vertex.z];
-      //   originalPositions.push(vertexPosition);
-      // }
 
       // let material =  new THREE.MeshPhongMaterial( { shininess: 5, flatShading: false, color: colors[0]} );
       let material =  new THREE.MeshToonMaterial( { flatShading: false, color: colors[0], transparent: true, opacity: 0 } );
@@ -571,45 +507,63 @@ function initPart() {
             this.accelerations[i].add(aForce);
         }
       }
+  }
+  
+  // define create and animate petals functions
+  function createPetals() {
+    // draw petals
+    let petalMaterial =  new THREE.MeshPhongMaterial( { shininess: 0, flatShading: false, transparent: true, opacity: 0, color: colors[0]} );
+    for (let i = 0; i < numPetals; i++) {    
+      let petal = new THREE.Mesh(petalGeom, petalMaterial);
+      petal.rotation.x = 10 * Math.sin(i);
+      petal.rotation.y = 10 * Math.cos(i);    
+      // petal.rotation.x = Math.random() * Math.PI;
+      // petal.rotation.y = Math.random() * Math.PI;
+      petal.rotation.z = Math.random() * Math.PI;
+      // petal.rotation.z = 10 * Math.cos(i);
+      
+      petal.speedX = 0.001 ;
+      petal.speedY = 0.001 ;
+      petal.speedZ = 0.001;    
+      // petal.speedX = Math.random() * 0.001 - 0.0001;
+      // petal.speedY = Math.random() * 0.001 - 0.0001;
+      // petal.speedZ = Math.random() * 0.001 - 0.0001;
+      petal.castShadow = true;
+      petal.receiveShadow = true;
+      petal.material.opacity = 0;
+      
+      petals.push(petal);
+      petalsCont.add(petal);
+    }
+    petalsCont.position.z = boundary;
+    petalsCont.position.x = boundary/1.1;
+    petalsCont.position.y = boundary/1.1;
+  }
+  function animatePetals() {
+    for (let i = 0; i < numPetals; i++) {
+      petals[i].rotation.x += petals[i].speedX*1.2;
+      petals[i].rotation.y += petals[i].speedY*1.2;
+      petals[i].rotation.z += petals[i].speedZ*1.2;
+      
+      if ( petals[i].material.opacity < 1 ) {
+        petals[i].material.opacity += 0.0005;
+      }
 
     }
+    petalsCont.rotation.y += 0.002*6;
+  }
 
-
-  //   function loopThroughPoses(poses, nose) {
-  //     for (let i = 0; i < poses.length; i++) {
-  //       let pose = poses[i].pose;
-  //       for (let j = 0; j < pose.keypoints.length; j++) {
-  //         let keypoint = pose.keypoints[j];
-  //         if (keypoint.score > 0.2 && keypoint.part === 'nose') {
-  //           nose.x = keypoint.position.x;
-  //           nose.y = keypoint.position.y;
-    
-  //           // console.log(nose.y)
-    
-  //           // let step;
-  //           // let noseThresh = 150;
-    
-  //           // if (nose.y > noseThresh) {
-  //           //    step = -0.1;
-  //           // } else {
-  //           //   step = 0.1;
-    
-    
-  //           // };
-
-  //           // scene.rotation.x -= step/10;
-  //           // centerShape.rotation.x += step;
-    
-  //           // centerShape.position.x = 0;
-  //           // centerShape.position.y = 0;
-    
-  //         }
-  //       }
-  //     }
-  //  }
-    
+  function attractToPetals() {
+    let petalsMover = new Mover(boundary, boundary/1.1, boundary/1.1, 60, 1000);
+    petalsMover.initialise();
+    // for (let i = 0; i < movers.length; i++){
+    //   movers[i].position.x = boundary;
+    //   movers[i].position.y = boundary/1.1;
+    //   movers[i].position.z = boundary/1.1;
+    // }
+    cloudSystem.attract(petalsMover);
+  }
 }
 
 
-
-window.onload = initPart;
+window.onload = initScene;
