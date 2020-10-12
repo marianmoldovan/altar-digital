@@ -1,4 +1,8 @@
-* {
+
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+*{
   /* border: 1px solid rgba(228, 110, 158, 0.5); */
   /* background: rgba(200, 100, 200, 0.5); */
 }
@@ -6,17 +10,19 @@
 body {
   margin: 0; 
   /* overflow: hidden; */
-  background: #FFFFFF;
+  background: black;
   /* font-family: 'Vollkorn', serif; */
   /* font-family: 'Roboto', sans-serif; */
   /* font-family: 'Open Sans', sans-serif; */
-  font-family: 'Baskervville', serif;
+  font-family: 'Cormorant Garamond', serif;
   /* font-family: 'Playfair Display', serif; */
   /* font-size: 18px; */
   margin: 0;
   padding:0;
   font-size: 32px;
   color: black;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
 }
 
 
@@ -76,17 +82,38 @@ h1 {
   /* color: #81CDE0; */
   /* padding: 0.5em 2em; */
   padding: 0.5em 0em;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.025em;
   margin: 0.5em 0;
   position: relative;
 }
 
 p {
   font-size: 1em;
+  text-shadow: 0px 4px 12px rgba(255, 255, 255, 0.425);
+
+  
 }
 
 h3 {
-  font-size: 2em;
+  font-size: 1.25em;
+  word-spacing: auto;
+  text-shadow: 0px 4px 12px rgba(255, 255, 255, 0.425);
+  letter-spacing: 0.025em;
+}
+
+h2{
+  font-size: 1.75em;
+  word-spacing: auto;
+  text-shadow: 0px 4px 12px rgba(255, 255, 255, 0.425);
+
+}
+
+h4{
+  text-shadow: 0px 4px 12px rgba(255, 255, 255, 0.425);
+  word-spacing: auto;
+
+
+
 }
 
 
@@ -282,12 +309,66 @@ h3 {
   margin: 0 !important;
 }
 
+
+/* DERECHA*/
+#uno, #dos, #doce, #veinte {
+  margin-top: 5%; 
+  margin-left: 70%;
+  font-size: 22px;
+  text-shadow: 0px 4px 12px rgba(255, 255, 255, 0.425);
+  text-align: right;
+  
+}
+
+
+#dieciseis {
+  margin-top: 5%; 
+  margin-left: 70%;
+  font-size: 30px;
+  text-shadow: 0px 4px 12px rgba(255, 255, 255, 0.425);
+}
+
+/* EFECTO
+#tres:before, #veintitres:before {
+  font-size:3em;
+  text-align:center;
+  margin-top:40vh;
+  content:'Respira';
+  animation: texte 5s infinite;
+}
+
+@keyframes texte {
+  
+  10% {
+    content: 'Recuerda';
+  }
+  
+}*/
+
+/* IZQUIERDA*/
+#cuatro, #nueve, #catorce, #dieciocho, #veintidos {
+  margin-top: 0; 
+  margin-right: 80%;
+  font-size: 22px;
+  text-shadow: 0px 4px 12px rgba(255, 255, 255, 0.425);
+}
+/* CENTRO*/
+#diez, #quince #veintidos, #veintiocho, #treinta, #treintayuno, #treintaytres, #treintaysiete {
+  font-size: 22px;
+  text-shadow: 0px 4px 12px rgba(255, 255, 255, 0.425);
+
+}
+
+
+
+/* Formulario*/
 .form {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   /* align-content: center; */
   align-items: flex-start;
+  
 }
 
 .form-text {
@@ -296,22 +377,32 @@ h3 {
   flex-direction: row;
   align-items: center;
   width: 100%;
+  text-shadow: 0px 4px 12px rgba(255, 255, 255, 0.425);
+
+  
 }
 
 .form-text p {
   margin: 1em 1em;
   width: 300px;
+  font-size: 20px;
 }
 
 
 .form-text input {
   margin: 1em 1em;
+  border-width: 0 0 2px 0;
+  border-color: white;
+  line-height: 26px;
+  background-color: transparent;
+  
 }
 
 .input-short {
   width: 300px;
   height: 25px;
   align-self: center;
+  
 }
 
 /* .input-num-cont {
@@ -332,9 +423,13 @@ h3 {
 
 .input-long {
   width: 300px;
-  height: 200px;
+  height: 50px;
   align-self: center;
 }
+
+
+
+
 
 .form-button {
   width: 100%;
@@ -342,21 +437,36 @@ h3 {
   justify-content: center;
   align-items: center;
   margin: 1em 1em;
+
 }
 
 #form-button {
-  border-radius: 4px;
-  background-color: #E7C045;
-  border: none;
-  color: #FFFFFF;
-  font-family: 'Baskervville', serif;
+  background-color: transparent; 
+  background-position: 100% 0;
+  background-size: 200% 200%;
+  border: none; 
+  outline: solid;
+  outline-width: 1px;
+  color: white;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0px 8px 8px rgba(255, 253, 253, 0.2);
   text-align: center;
-  font-size: 24px;
-  padding: 20px;
+  font-size: 18px;
   width: 200px;
-  /* transition: all 0.5s; */
+  height: 40px; 
+  /* transition: all 0.5s;  */
   cursor: pointer;
-  margin: 5px;
+  margin: 50px;
+  box-shadow: 0 16px 32px 0 rgba(252, 181, 100, 0.247);
+  transition: all 0.5s ease;
+}
+
+#form-button:hover{
+  box-shadow: 0 16px 16px 0 rgba(255, 255, 255, 0.0966);
+  background-position: 0 0; 
+
 }
 
 #form-button:disabled {

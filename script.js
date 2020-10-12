@@ -566,4 +566,4 @@ function initScene() {
 }
 
 
-window.onload = initScene;
+//  window.onload = initScene;

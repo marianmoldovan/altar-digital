@@ -72,8 +72,8 @@ function handleResize() {
   }
 
   if (response.direction == "down") {
-    // add color to current step
-    step.classed("is-active", function (d, i) {
+      // add color to current step
+      step.classed("is-active", function (d, i) {
       return i === response.index;
     });
   }
