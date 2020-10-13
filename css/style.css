@@ -1,11 +1,11 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
-
+ /*
 *{
-  /* border: 1px solid rgba(228, 110, 158, 0.5); */
-  /* background: rgba(200, 100, 200, 0.5); */
-}
+  border: 1px solid rgba(228, 110, 158, 0.5); 
+   background: rgba(200, 100, 200, 0.5); 
+}*/
 
 body {
   margin: 0; 
@@ -78,7 +78,7 @@ figure p {
 h1 {
   font-size: 2em;
   /* font-size: 4em; */
-  color: white
+  color: white;
   /* color: #81CDE0; */
   /* padding: 0.5em 2em; */
   padding: 0.5em 0em;
@@ -281,7 +281,7 @@ h4{
 
 .step:last-child {
   display: flex;
-  width: 100%
+  width: 100%;
   margin-bottom: 0;
 }
 
@@ -310,8 +310,11 @@ h4{
 }
 
 
+
+
+
 /* DERECHA*/
-#uno, #dos, #doce, #veinte {
+#uno, #dos {
   margin-top: 5%; 
   margin-left: 70%;
   font-size: 22px;
@@ -321,43 +324,33 @@ h4{
 }
 
 
-#dieciseis {
-  margin-top: 5%; 
-  margin-left: 70%;
-  font-size: 30px;
-  text-shadow: 0px 4px 12px rgba(255, 255, 255, 0.425);
-}
-
-/* EFECTO
+/* EFECTO*/
 #tres:before, #veintitres:before {
   font-size:3em;
   text-align:center;
   margin-top:40vh;
   content:'Respira';
   animation: texte 5s infinite;
+
 }
 
 @keyframes texte {
-  
+
   10% {
     content: 'Recuerda';
   }
-  
-}*/
+
+}
 
 /* IZQUIERDA*/
-#cuatro, #nueve, #catorce, #dieciocho, #veintidos {
+#cuatro {
   margin-top: 0; 
   margin-right: 80%;
   font-size: 22px;
   text-shadow: 0px 4px 12px rgba(255, 255, 255, 0.425);
 }
-/* CENTRO*/
-#diez, #quince #veintidos, #veintiocho, #treinta, #treintayuno, #treintaytres, #treintaysiete {
-  font-size: 22px;
-  text-shadow: 0px 4px 12px rgba(255, 255, 255, 0.425);
 
-}
+
 
 
 
