@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Altar Digital</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
 
   <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
   <script src="https://unpkg.com/scrollama"></script>
@@ -29,8 +30,15 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
   <script type="text/javascript" src="https://cdn.rawgit.com/josephg/noisejs/master/perlin.js"></script>
 
+
   <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&display=swap" rel="stylesheet"> 
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="text/javascript" src="./textos.js"></script>
+  <!-- <script type="text/javascript" src="./textos-3d.js"></script> -->
+
+
+  
 
 </head>
 
@@ -45,38 +53,44 @@
     <div id="scrolly">
       <article>
         <div class="main-col">
-          <div class="step" data-step="1">
-            <h3>CREATURA</h3>
+          <div class="step" data-step="1" id="uno">
+            <p>Cuando la noche se vuelva oscura,</br>
+            y el aire pese al entrar al pecho,</p>
           </div>
 
-          <div class="step" data-step="2">
-            <p>Cuando la noche se vuelva obscura</p>
-            <p>y sea tiempo de recordarles</p>
+          <div class="step" data-step="2" id="dos">
+            <p> <strong>Creatura</strong>,</br> no temas cerrar los ojos</p>
+            <p>Destellos iluminarán tu memoria</p>
           </div>
 
-          <div class="step" data-step="3">
-            <p>no temas cerrar los ojos.</p>
+          <div class="step" data-step="3" id="tres">
+           <p></p>
           </div>
 
-          <div class="step" data-step="4">
-            <h3>RESPIRA</h3>
-            <h3>OBSERVA</h3>
-            <h3>DANZA</h3>
+          <div class="step" data-step="4" id="cuatro">
+            <p>En un<strong>Altar</strong>,</br>
+            A lxs que solían vivir,</p>
+
           </div>
 
-          <div class="step" data-step="5">
-            <p>Siente su presencia</p>
-            <p>Ya están aquí</p>
+          <div class="step" data-step="5" id="cinco">
+            <h4>Siente su presencia</h4>
+    
           </div>   
 
-          <div class="step" data-step="6">
+          <div class="step" data-step="6" id="seis">
+            <h3>Ya están <strong>aquí</strong> </h3>
+     
+          </div>          
+          
+          <div class="step" data-step="7" id="siete">
      
           </div>
 
-          <div class="step" data-step="7">
+          <div class="step" data-step="8">
             <form class="form">
               <div class="form-text">
-                <p>Escribe su nombre</p>
+                <p>¿A quién quieres recordar hoy?</p>
                 <input id="nombre" class="input-short"></input>
               </div>            
               <div class="form-text">
@@ -88,31 +102,33 @@
                 <input type="number" min="1000" max="2020" id="murio" class="input-num"></input>
               </div>
               <div class="form-text">
-                <p>¿Qué quieres recordar/honrar de su presencia?</p>
-                <input class="input-long"></input>
+                <p>¿Qué quieres recordar/ </br>honrar de su presencia?</p>
+                <input class="input-long" id="text-input"></input>
               </div>
               <div class="form-button">
-                <button id="form-button">Hacer ofrenda</button>
+                <button type="button" id="form-button">Hacer ofrenda</button>
               </div>
             </form>       
         </div>
-        <div class="step" data-step="8">
-          jam parte 1
+
+        <div class="step" data-step="9" id="jam01">
+          <p>LUZ </p>
         </div>   
-        <div class="step" data-step="9">
-          jam parte 2
-        </div>      
-        <div class="step" data-step="10">
-          jam parte 3
+        <div class="step" data-step="10" id="jam02">
+          <p> CUERPO</p>
         </div>  
-        <div class="step" data-step="11">
-          transición
+        <div class="step" data-step="11" id="jam03">
+          <p>OFRENDA</p>
         </div>  
-        <div class="step" data-step="12">
-          altar
+         
+        <div class="step" data-step="12" id="transicion">
+          transición - Recuérdales 
+        </div>  
+        <div class="step" data-step="13" id="altar">
+          <div id="poema-altar"></div>
         </div>  
 
-        <video id="vidCor" width="1920" height="1080" autoplay>
+        <video id="vidCor" width="1920" height="1080" autoplay >
           <!-- <source src="video/prueba_01-invertida.mp4" type="video/mp4"> -->
           <source src="video/coreo_01-web.mp4" type="video/mp4">
           <!-- <source src="video/prueba_01.mp4" type="video/mp4"> -->
@@ -131,6 +147,7 @@
   <!-- <script src="./script.js"></script> -->
   <script src="./script.js"></script>
   <script src="./main.js"></script>
+  <!-- <script src="./textos.js"></script> -->
   <!-- <script type="text/javascript" src="mover.js"></script> -->
 
 
