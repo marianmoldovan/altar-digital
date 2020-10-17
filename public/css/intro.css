@@ -1,0 +1,475 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+
+#mi-body {
+
+    perspective: 3000px;
+    background-color: black;
+    font-family: 'Cormorant Garamond', serif;
+ 
+}
+
+
+
+
+
+
+.demo3{
+
+    width:20%;
+    height: auto;
+}
+
+#portada{
+    height: 260px;
+    width: auto;
+    background: url(../img/01.png) 90% top no-repeat;
+    background-size: 276px;
+    animation: fadein 3s;
+    -moz-animation: fadein 3s; /* Firefox */
+    -webkit-animation: fadein 3s; /* Safari and Chrome */
+    -o-animation: fadein 3s; /* Opera */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+h3{
+  font-size: 1.25em;
+  word-spacing: auto;
+  text-shadow: 0px 4px 12px rgba(253, 213, 53, 0.974);
+  letter-spacing: 0.025em;
+
+}
+        
+p{
+padding-top: 20px;
+text-align: center; 
+
+font-style: normal;
+font-weight: normal;
+font-size: 1em;
+
+line-height: 25px;
+
+
+ }
+
+
+ .my-col{
+
+    display: block;
+    position: relative;
+
+    animation: fadein 8s;
+    -moz-animation: fadein 8s; /* Firefox */
+    -webkit-animation: fadein 8s; /* Safari and Chrome */
+    -o-animation: fadein 8s; /* Opera */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+  
+
+
+
+ /* BOTONES */
+
+.my-btn{
+
+justify-content: space-around;
+
+width: 30px;
+
+ }
+
+ /* #my-btni{
+
+
+border-radius: 22px;
+    
+ } */
+
+
+#btn-5{
+
+  background-color: transparent; 
+  background-position: 100% 0;
+  background-size: 200% 200%;
+  border: none; 
+  outline: solid;
+  outline-width: 1px;
+  color: rgb(243, 146, 1);
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0px 8px 8px rgba(255, 253, 253, 0.2);
+  text-align: center;
+  font-size: 16px;
+  width: 250px;
+  height: 40px; 
+  /* transition: all 0.5s;  */
+  cursor: pointer;
+  margin: 50px;
+  box-shadow: 0 16px 32px 0 rgba(252, 181, 100, 0.247);
+  transition: all 0.5s ease;
+  animation: fadein 10s;
+  -moz-animation: fadein 10s; /* Firefox */
+  -webkit-animation: fadein 10s; /* Safari and Chrome */
+  -o-animation: fadein 10s; /* Opera */
+}
+@keyframes fadein {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-moz-keyframes fadein { /* Firefox */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-o-keyframes fadein { /* Opera */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+
+
+
+#btn-5:hover {
+  box-shadow: 0 16px 16px 0 rgba(255, 255, 255, 0.0966);
+  background-position: 0 0; 
+
+}
+
+#btn-5:disabled{
+  background-color: gray;
+  color: #202224; 
+  cursor: not-allowed;
+}
+
+
+#btn-3{
+  font: orange; 
+  font-style:italic;
+  font-size: 15px;
+    width: 150px;
+    animation: fadein 10s;
+    -moz-animation: fadein 10s; /* Firefox */
+    -webkit-animation: fadein 10s; /* Safari and Chrome */
+    -o-animation: fadein 10s; /* Opera */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+  
+
+
+
+
+
+/* PETALOS DE FONDO */
+
+
+.petal {
+    height: 950px;
+    width: 100%;
+    position: absolute;
+    top: -150px;
+    text-align: center;
+    box-sizing: border-box;
+    overflow: hidden;
+
+  }
+  
+  .petal span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 200px 10px 200px 200px;
+    background: linear-gradient(to bottom, rgb(209, 146, 28), rgb(240, 205, 153));
+    z-index: 1;
+    transform: skewX(30deg);
+    backface-visibility: visible;
+    -webkit-animation: fallingSakura1 7s ease infinite;
+  }
+  
+  .petal span:nth-of-type(3n+2) {
+    -webkit-animation: fallingSakura2 7s ease infinite;
+  }
+  
+  .petal span:nth-of-type(3n+1) {
+    -webkit-animation: fallingSakura3 7s ease infinite;
+
+  }
+  
+  
+  .petal span:nth-of-type(n)   { -webkit-animation-delay: -1.9s;}
+  .petal span:nth-of-type(2n)  { -webkit-animation-delay: 3.9s;}
+  .petal span:nth-of-type(3n)  { -webkit-animation-delay: 2.3s;}
+  .petal span:nth-of-type(4n)  { -webkit-animation-delay: 4.4s;}
+  .petal span:nth-of-type(5n)  { -webkit-animation-delay: 5s;  }
+  .petal span:nth-of-type(6n)  { -webkit-animation-delay: 3.5s;}
+  .petal span:nth-of-type(7n)  { -webkit-animation-delay: 2.8s;}
+  .petal span:nth-of-type(8n)  { -webkit-animation-delay: 1.5s;}
+  .petal span:nth-of-type(9n)  { -webkit-animation-delay: 3.3s;}
+  .petal span:nth-of-type(10n) { -webkit-animation-delay: 2.5s;}
+  .petal span:nth-of-type(11n) { -webkit-animation-delay: 1.2s;}
+  .petal span:nth-of-type(12n) { -webkit-animation-delay: 4.1s;}
+  .petal span:nth-of-type(13n) { -webkit-animation-delay: 5.8s;}
+  .petal span:nth-of-type(14n) { -webkit-animation-delay: -0.1s;}
+  .petal span:nth-of-type(15n) { -webkit-animation-delay: 6.3s;}
+  .petal span:nth-of-type(16n) { -webkit-animation-delay: -1s;}
+  .petal span:nth-of-type(17n) { -webkit-animation-delay: 7.4s;}
+  .petal span:nth-of-type(18n) { -webkit-animation-delay: -0.3s;}
+  .petal span:nth-of-type(19n) { -webkit-animation-delay: 8.3s;}
+  .petal span:nth-of-type(20n) { -webkit-animation-delay: -0.6s;}
+  .petal span:nth-of-type(21n) { -webkit-animation-delay: 7.7s;}
+  
+  .petal span:nth-of-type(2n+2) {
+    background: linear-gradient(to right, orange, rgb(224, 202, 105));
+    width: 40px;
+    height: 40px;
+
+  }
+  
+  .petal span:nth-of-type(3n+1) {
+    background: linear-gradient(to right, orange, rgb(240, 189, 94));
+    
+  }
+  
+  .petal span:nth-of-type(3n+2) {
+    border-radius: 20px 1px;
+  }
+  .petal span:nth-of-type(3n+3) {
+    transform: rotateX(-180deg);
+  }
+  
+  .petal span:nth-of-type(3n+2) {
+    animation-duration: 12sec;
+  }
+  
+  .petal span:nth-of-type(4n+2) {
+    animation-duration: 9sec;
+  }
+  
+  .petal span:nth-of-type(5n+2) {
+    width: 12px;
+    height: 12px;
+    box-shadow: 1.5px 1.5px 8px #fc7bd1;
+  }
+  
+  .petal span:nth-of-type(4n+3) {
+    width: 10px;
+    height: 10px;
+    box-shadow: 1px 1px 6px #fc7bd1;
+  }
+  
+  @-webkit-keyframes fallingSakura1 {
+        0% {
+          -webkit-transform:
+              translate3d(0,0,0)
+              rotateX(0deg);
+          opacity: 1;
+      }  
+      
+      100% {
+          -webkit-transform:
+              translate3d(400px,1200px,0px)
+              rotateX(-290deg);
+          opacity: 0.3;
+      }
+  }
+  
+  @-webkit-keyframes fallingSakura2 {
+      0% {
+          -webkit-transform:
+              translate3d(0,0,0)
+              rotateX(-20deg);
+        opacity: 1;
+      }  
+      
+      100% {
+          -webkit-transform:
+              translate3d(200px,1200px,0px)
+              rotateX(-70deg);
+              opacity: 0.2;
+      }
+  }
+  
+  @-webkit-keyframes fallingSakura3 {
+       0% {
+          -webkit-transform:
+              translate3d(0,0,0)
+              rotateX(90deg);
+         opacity: 1;
+      }
+      
+      100% {
+          -webkit-transform:
+              translate3d(500px,1200px,0px)
+              rotateX(290deg);
+          opacity: 0;
+      }
+  }
+
+
+/* flores de fondo */
+
+#petals{
+
+    background: url(../img/03.png) 101% bottom no-repeat, url(../img/02.png) 75% 50% no-repeat, url(../img/04.png) 10% 85% no-repeat;
+    background-size: 230px, 150px,200px;
+
+    animation: fadein 6s;
+    -moz-animation: fadein 6s; /* Firefox */
+    -webkit-animation: fadein 6s; /* Safari and Chrome */
+    -o-animation: fadein 6s; /* Opera */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+  }
