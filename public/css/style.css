@@ -340,31 +340,7 @@ h4{
 }
 
 
-/* EFECTO*/
-#tres:before, #veintitres:before {
-  font-size:3em;
-  text-align:center;
-  margin-top:40vh;
-  content:'Respira';
-  animation: texte 5s infinite;
 
-}
-
-@keyframes texte {
-
-  10% {
-    content: 'Recuerda';
-  }
-
-}
-
-/* IZQUIERDA*/
-#cuatro {
-  margin-top: 0; 
-  margin-right: 80%;
-  font-size: 22px;
-  text-shadow: 0px 4px 12px rgba(255, 255, 255, 0.425);
-}
 
 
 

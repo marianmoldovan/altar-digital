@@ -1,3 +1,4 @@
-node_modules/
-public/video/coreo_01-web.mp4
-public/lib
+node_modules
+package-lock.json
+*.DS_Store
+video/coreo_01-web.mp4
