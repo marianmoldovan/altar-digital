@@ -46,26 +46,26 @@ function handleResize() {
    if (response.index > 0 && !coreoOn) {
     coreoOn = true;
     partsOn = true;
-   } else if (response.index > 6 && coreoOn) {
+   } else if (response.index > 3 && coreoOn) {
     coreoOn = false;
     partsOn = false;
    } 
 
-  if (response.index === 8 || response.index === 9 || response.index === 10 ) {
+  if (response.index === 5 || response.index === 6 || response.index === 7 ) {
       coreoOn = false;
       partsOn = true;
       jamOn = true;
       console.log("jamOn")
   }
 
-  if (response.index > 10 ) {
+  if (response.index > 7 ) {
       jamOn = false;
       transOn = true;
       partsOn = true;
       console.log("transOn")
   }
 
-  if (response.index > 11 ) {
+  if (response.index > 8 ) {
       altarOn = true;
       partsOn = true;
       console.log("petalsOn")

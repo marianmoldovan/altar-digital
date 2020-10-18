@@ -294,7 +294,7 @@ border-radius: 22px;
 #petals{
 
     background: url(../img/02.png) 0.5% 103% no-repeat;
-    background-size: 230px, 150px,200px; 
+    background-size: 230px; 
 
     animation: fadein 6s;
     -moz-animation: fadein 6s; /* Firefox */
