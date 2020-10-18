@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Altar Digital</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+
+  <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+  <script src="https://unpkg.com/scrollama"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <!-- <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+  <script src="https://d3js.org/d3-color.v1.min.js"></script>
+  <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script> -->
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/easing/EasePack.min.js'></script>
+  <script src='https://threejs.org/build/three.js'></script>
+
+  <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js'></script> -->
+  <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/easing/EasePack.min.js'></script> -->
+  
+  <script src='https://threejs.org/examples/js/controls/OrbitControls.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/easing/EasePack.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js'></script>
+  <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+
+  <!-- <script language="javascript" type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script> -->
+  <!-- <script type="text/javascript" src="https://cdn.rawgit.com/josephg/noisejs/master/perlin.js"></script> -->
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- <script type="text/javascript" src="./src/textos.js"></script> -->
+  <!-- <script type="text/javascript" src="./src/textos-3d.js"></script> -->
+
+
+  
+
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <div id="coreo">
+    <div id="video"> </div>    
+    <div id="camVid"> </div>    
+  </div>
+
+  <main>
+    <div id="scrolly">
+      <article>
+        <div class="main-col">
+          <div class="step" data-step="1" id="uno">
+            <p>Cuando la noche se vuelva oscura,</br>
+            y el aire pese al entrar al pecho,</p>
+          </div>
+
+          <div class="step" data-step="2" id="dos">
+            <p> <strong>Creatura</strong>,</br> no temas cerrar los ojos</p>
+            <p>Destellos iluminarán tu memoria</p>
+          </div>
+
+
+          <div class="step" data-step="3" id="tres">
+            <p>En un <strong>Altar</strong>,</br>
+            A lxs que solían vivir,</p>
+
+          </div>
+          
+
+
+          <div class="step" data-step="4">
+            <form class="form">
+              <div class="form-text">
+                <p>¿A quién quieres recordar hoy?</p>
+                <input id="nombre" class="input-short"></input>
+              </div>            
+              <div class="form-text">
+                <p>Año en que nació</p>
+                <input type="number" min="1000" max="2020" id="nacio" class="input-num"></input>
+              </div>           
+              <div class="form-text">
+                <p>Año en que dejó su cuerpo</p>
+                <input type="number" min="1000" max="2020" id="murio" class="input-num"></input>
+              </div>
+              <div class="form-text">
+                <p>¿Qué quieres recordar/ </br>honrar de su presencia?</p>
+                <input class="input-long" id="text-input"></input>
+              </div>
+              <div class="form-button">
+                <button type="button" id="form-button">Hacer ofrenda</button>
+              </div>
+            </form>       
+        </div>
+
+        <div class="step" data-step="5" id="jam01">
+          <p>LUZ </p>
+        </div>   
+        <div class="step" data-step="5" id="jam02">
+          <p> CUERPO</p>
+        </div>  
+        <div class="step" data-step="7" id="jam03">
+          <p>OFRENDA</p>
+        </div>  
+         
+        <div class="step" data-step="8" id="transicion">
+          transición - Recuérdales 
+        </div>  
+        <div class="step" data-step="9" id="altar">
+          <div id="poema-altar"></div>
+        </div>  
+
+        <video id="vidCor" width="1920" height="1080" autoplay >
+          <!-- <source src="video/prueba_01-invertida.mp4" type="video/mp4"> -->
+          <source src="video/coreo_01-web.mp4" type="video/mp4">
+          <!-- <source src="video/prueba_01.mp4" type="video/mp4"> -->
+        </video> 
+
+      </article>
+
+      <!-- <figure>
+        <p>0</p>
+      </figure> -->
+
+    </div>
+  </main>
+
+
+  <!-- <script src="./script.js"></script> -->
+  <script src="./src/script.js"></script>
+  <script src="./src/main.js"></script>
+  <script src="./src/textos.js"></script>
+  <!-- <script type="text/javascript" src="mover.js"></script> -->
+
+
+</body>
+
+</html>
