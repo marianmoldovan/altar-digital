@@ -1,4 +1,5 @@
-function initScene() {
+
+function initScene() {  
   // colors array
   let colors = ["#E7C045", '#E37E05', '#F74000', '#7A946E', '#2C3143'];
 
@@ -33,19 +34,41 @@ function initScene() {
   light4.position.set(50,-50,10);
   scene.add(light4);
 
-  // get video div & disable display
-  let vidCor = document.getElementById("vidCor");
-  vidCor.disabled = true;
+
 
 
   // set scene div and renderer
-  const coreo  = document.getElementById('coreo');
   let renderer = new THREE.WebGLRenderer( { antialias: true } );
   renderer.setPixelRatio( window.devicePixelRatio );
   renderer.setSize( window.innerWidth, window.innerHeight );
-  coreo.appendChild( renderer.domElement );
+  const sceneCont  = document.getElementById('sceneCont');
+  sceneCont.appendChild( renderer.domElement );
 
   let poseNet;
+
+  let jamPlane;
+  let planeGeom = new THREE.PlaneBufferGeometry( 1920, 1080, 2 );
+  let planeMaterial = new THREE.MeshBasicMaterial( {
+    // color: 0xffffff, 
+    transparent: true,
+    blending: THREE.AdditiveBlending
+
+    // side: THREE.DoubleSide
+  });
+
+  // get video element (mp4) & disable display
+  let vidCor = document.getElementById("vidCor");
+  vidCor.disabled = true;
+
+  // get video element (mp4) & disable display
+  // let vidJam01 = document.getElementById("vidJam01");
+  // vidJam01.disabled = true;
+  // vidJam01.opacity = 0;
+
+
+
+
+
   // create video input for posenet
   const videoPos = document.createElement('video');
   // const testDiv  = document.getElementById('video-test');
@@ -53,14 +76,18 @@ function initScene() {
   videoPos.setAttribute('height', 255);  
   videoPos.autoplay = true;
 
-  // create video & webcam divs
+  // create new video element
   const videoOut = document.createElement('video');
-  const vidDiv = document.getElementById('video');
-  const camDiv = document.getElementById('camVid');
   videoOut.setAttribute('width', 1920);
   videoOut.setAttribute('height', 1080);  
   videoOut.autoplay = true;
-  camDiv.appendChild(vidCor);
+
+  // create video & webcam divs
+  const vidDiv = document.getElementById('videoCont');
+  const camDiv = document.getElementById('camVid');
+
+  // camDiv.appendChild(vidCor);
+  vidDiv.appendChild(vidCor);
 
   // stream webcam for posenet
   navigator.mediaDevices.getUserMedia({
@@ -340,9 +367,13 @@ function initScene() {
       // pMaterial.color = "#508DBF";
       let webcamAdded = false;
       if (!webcamAdded) {
-        vidDiv.appendChild(videoOut); // display video input
-        vidDiv.style.opacity = 1;
-        camVid.style.opacity = 0;
+        camVid.appendChild(videoOut); // display video input
+        camVid.style.opacity = 1;
+        // vidCor.opacity = 0;
+        // vidJam01.disabled = false;
+        // vidJam01.opacity = 1;
+        // vidDiv.appendChild(vidJam01);
+        vidDiv.style.opacity = 0;
         webcamAdded = true;
       }
       console.log("jam trigger");
@@ -351,12 +382,78 @@ function initScene() {
       }
     }
 
+    if (jam01On) {
+      let jam01Added = false;
+      if (!jam01Added) {
+        createPlane();
+        let vidJam01Src = document.getElementById( 'vidJam01' );
+        vidJam01Src.play();
+        let jam01texture = new THREE.VideoTexture( vidJam01Src );
+        // jam01texture.minFilter = THREE.LinearFilter;
+        // jam01texture.magFilter = THREE.LinearFilter;
+        jam01texture.format = THREE.RGBFormat;
+        planeMaterial.map = jam01texture;
+        // light1.color = 0x95C077;
+        jam01Added = true;
+      }
+    }
+
+    if (jam02On) {
+      let jam02Added = false;
+      if (!jam02Added) {
+        let vidJam02Src = document.getElementById( 'vidJam02' );
+        vidJam02Src.play();
+        let jam02texture = new THREE.VideoTexture( vidJam02Src );
+        // jam01texture.minFilter = THREE.LinearFilter;
+        // jam01texture.magFilter = THREE.LinearFilter;
+        jam02texture.format = THREE.RGBFormat;
+        planeMaterial.map = jam02texture;
+        // planeMaterial.color = "red";
+        // light1.color = 0xBE74D4;
+        jam02Added = true;
+      }
+    }
+
+
+    if (jam03On) {
+      let jam03Added = false;
+      if (!jam03Added) {
+        let vidJam03Src = document.getElementById( 'vidJam03' );
+        vidJam03Src.play();
+        let jam03texture = new THREE.VideoTexture( vidJam03Src );
+        // jam01texture.minFilter = THREE.LinearFilter;
+        // jam01texture.magFilter = THREE.LinearFilter;
+        jam03texture.format = THREE.RGBFormat;
+        planeMaterial.map = jam03texture;
+        // planeMaterial.color = "red";
+        // light1.color = 0xE3BF7A;
+        jam03Added = true;
+      }
+    }
+
+
+
     if (transOn) {
       attractToPetals();
+      let jam04Added = false;
+      if (!jam04Added) {
+        let vidJam04Src = document.getElementById( 'vidJam04' );
+        vidJam04Src.play();
+        let jam04texture = new THREE.VideoTexture( vidJam04Src );
+        // jam01texture.minFilter = THREE.LinearFilter;
+        // jam01texture.magFilter = THREE.LinearFilter;
+        jam04texture.format = THREE.RGBFormat;
+        planeMaterial.map = jam04texture;
+        // planeMaterial.color = "red";
+        jam04Added = true;
+      }
     }
 
     if (altarOn) {
-      vidDiv.style.opacity = 1;
+      planeMaterial.opacity = 0;
+      // jamPlane.visible = false;
+      // jamPlane.remove();
+      camVid.style.opacity = 1;
 
       let petalsAdded = false;
       if (!petalsAdded) {
@@ -606,7 +703,16 @@ function initScene() {
     cloudSystem.attract(petalsMover);
     mouseCloudSystem.attract(petalsMover);
   }
+
+  function createPlane() {
+    jamPlane = new THREE.Mesh( planeGeom, planeMaterial );
+    jamPlane.position.z = 800;
+    // jamPlane.translate(0,0,5);
+    scene.add( jamPlane );
+  }
 }
+
+
 
 // once everything is loaded, run
 window.onload = initScene;
