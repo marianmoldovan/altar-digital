@@ -54,7 +54,7 @@ let altar;
 
 function setup() {
   // use full screen size
-  canvas = createCanvas(720, 960).parent('poema-altar');
+  canvas = createCanvas(800, 960).parent('poema-altar');
 
   // createCanvas(displayWidth, displayHeight);
   background(255,0);
@@ -86,7 +86,8 @@ function setup() {
 }
 
 function draw() {
-  if (mouseIsPressed && mouseButton == LEFT) {
+  // if (mouseIsPressed && mouseButton == LEFT) {
+  if (altarOn && movedX) {
     console.log("drawing");
     var d = dist(x, y, mouseX, mouseY);
     textSize(fontSizeMin + d / 2);
@@ -112,8 +113,9 @@ function draw() {
 }
 
 function mousePressed() {
-  x = mouseX;
-  y = mouseY;
+  // x = mouseX;
+  // y = mouseY;
+  clear();
 }
 
 

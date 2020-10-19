@@ -1,4 +1,5 @@
 node_modules
 package-lock.json
+public/video
+public/lib
 *.DS_Store
-video/coreo_01-web.mp4

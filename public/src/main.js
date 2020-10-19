@@ -12,9 +12,15 @@ let murio = document.getElementById("murio");
 
 let partsOn = false;
 let coreoOn = false;
+let formOn = false;
 let jamOn = false;
 let altarOn = false;
 let transOn = false;
+
+let jam01On;
+let jam02On;
+let jam03On;
+
 
 if ( nombre.value && nacio.value && murio.value ) {
   button.disabled = false;
@@ -49,17 +55,49 @@ function handleResize() {
    } else if (response.index > 3 && coreoOn) {
     coreoOn = false;
     partsOn = false;
+    formOn = true;
+    console.log(formOn);
    } 
 
-  if (response.index === 5 || response.index === 6 || response.index === 7 ) {
-      coreoOn = false;
-      partsOn = true;
-      jamOn = true;
-      console.log("jamOn")
+  // if (response.index === 5 || response.index === 6 || response.index === 7 ) {
+  //     coreoOn = false;
+  //     partsOn = true;
+  //     jamOn = true;
+  //     console.log("jamOn")
+  // }
+
+  if (response.index === 5 ) {
+    coreoOn = false;
+    partsOn = true;
+    jamOn = true;
+    console.log("jamOn")
+    jam01On = true;
+    console.log("jam01On")
   }
+  if (response.index === 6 ) {
+    coreoOn = false;
+    partsOn = true;
+    jamOn = true;
+    console.log("jamOn")
+    jam01On = false;
+    jam02On = true;
+    console.log("jam02On")
+  }
+  if (response.index === 7 ) {
+    coreoOn = false;
+    partsOn = true;
+    jamOn = true;
+    console.log("jamOn")
+    jam02On = false;
+    jam03On = true;
+    console.log("jam03On")
+  }
+
 
   if (response.index > 7 ) {
       jamOn = false;
+      jam03 = false;
+
       transOn = true;
       partsOn = true;
       console.log("transOn")
